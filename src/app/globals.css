@@ -1,26 +1,412 @@
 @import "tailwindcss";
 
+/* Google Font */
+
 :root {
+  /* Brand */
+  --primary: #ff6673;
+  --primary-dark: #c52c3a;
+
+  --secondary: #ffb23f;
+  --secondary-dark: #976800;
+
+  --tertiary: #8c74d9;
+  --tertiary-dark: #46359a;
+
+  --neutral: #5b5f75;
+  --neutral-dark: #181b29;
+
+  /* Backgrounds */
   --background: #ffffff;
-  --foreground: #171717;
+  --surface: #f1f1ff;
+  --surface-soft: #f7f7ff;
+
+  /* Text */
+  --foreground: #181b29;
+  --text-muted: #75788a;
+  --text-light: #ffffff;
+
+  /* Borders */
+  --border: #dedff0;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgb(24 27 41 / 0.06);
+  --shadow-md: 0 8px 24px rgb(24 27 41 / 0.1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ------------------------------
+   Typography
+------------------------------ */
+
+.heading {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.body-text {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 400;
+  color: var(--foreground);
+}
+
+.muted-text {
+  color: var(--text-muted);
+}
+
+/* ------------------------------
+   Containers
+------------------------------ */
+
+.site-container {
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+}
+
+.surface {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+}
+
+/* ------------------------------
+   Buttons
+------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 40px;
+  padding: 10px 20px;
+
+  border: 1px solid transparent;
+  border-radius: 999px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--primary-dark);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #ac2230;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--neutral);
+}
+
+.btn-secondary:hover {
+  background: rgb(91 95 117 / 0.08);
+}
+
+.btn-inverted {
+  background: var(--neutral-dark);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--neutral);
+  border-color: var(--primary-dark);
+}
+
+.btn-outline:hover {
+  color: var(--primary-dark);
+  background: rgb(255 102 115 / 0.08);
+}
+
+/* ------------------------------
+   Inputs / Search
+------------------------------ */
+
+.input {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+
+  color: var(--foreground);
+  background: transparent;
+
+  border: 1px solid #e0b6bd;
+  border-radius: 999px;
+
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgb(255 102 115 / 0.12);
+}
+
+/* ------------------------------
+   Labels
+------------------------------ */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 7px 14px;
+  border-radius: 999px;
+
+  background: var(--primary);
+  color: var(--neutral-dark);
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ------------------------------
+   Icon buttons
+------------------------------ */
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 50%;
+
+  color: #fff;
+  background: var(--primary-dark);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.icon-btn.secondary {
+  background: var(--secondary-dark);
+}
+
+.icon-btn.tertiary {
+  background: var(--tertiary-dark);
+}
+
+.icon-btn.neutral {
+  background: var(--neutral-dark);
+}
+
+/* ------------------------------
+   Navigation
+------------------------------ */
+
+.nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px;
+  background: var(--surface);
+  border-radius: 999px;
+}
+
+.nav-item {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  color: var(--neutral);
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.nav-item:hover {
+  color: var(--primary-dark);
+}
+
+.nav-item.active {
+  color: #fff;
+  background: var(--primary-dark);
+}
+
+/* ------------------------------
+   Decorative lines
+------------------------------ */
+
+.brand-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.brand-line {
+  height: 4px;
+  border-radius: 999px;
+}
+
+.brand-line.primary {
+  width: 55%;
+  background: var(--primary-dark);
+}
+
+.brand-line.secondary {
+  width: 68%;
+  background: var(--secondary-dark);
+}
+
+.brand-line.tertiary {
+  width: 45%;
+  background: var(--tertiary-dark);
+}
+
+/* ------------------------------
+   Selection / Accessibility
+------------------------------ */
+
+::selection {
+  background: var(--primary);
+  color: var(--neutral-dark);
+}
+
+button,
+a,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ------------------------------
+   Responsive
+------------------------------ */
+
+@media (max-width: 768px) {
+  .site-container {
+    width: min(100% - 24px, 1200px);
+  }
+
+  .btn {
+    min-height: 42px;
+    padding-inline: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-container {
+    width: min(100% - 20px, 1200px);
+  }
+}
+
+
+/* ========================================
+   Category Marquee Animations
+======================================== */
+
+@keyframes category-scroll-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes category-scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.category-marquee-left {
+  animation: category-scroll-left 35s linear infinite;
+}
+
+.category-marquee-right {
+  animation: category-scroll-right 35s linear infinite;
+}
+
+/* Pause when user hovers a row */
+.category-marquee-left:hover,
+.category-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .category-marquee-left,
+  .category-marquee-right {
+    animation: none;
+  }
 }
