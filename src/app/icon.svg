@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#705FD9" />
+      <stop offset="100%" stop-color="#4E3FA8" />
+    </linearGradient>
+    <linearGradient id="capGrad" x1="16" y1="18" x2="48" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F2EFFF" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background squircle -->
+  <rect width="64" height="64" rx="16" fill="url(#bgGrad)" />
+
+  <!-- Graduation Cap Top Diamond -->
+  <path d="M32 15L51 24.5L32 34L13 24.5L32 15Z" fill="url(#capGrad)" />
+
+  <!-- Graduation Cap Skullcap Base -->
+  <path d="M21 29.5V36.5C21 40.5 26 43.5 32 43.5C38 43.5 43 40.5 43 36.5V29.5L32 35L21 29.5Z" fill="#FFFFFF" fill-opacity="0.9" />
+
+  <!-- Tassel Ribbon & Pearl -->
+  <path d="M44.5 27V38C44.5 39.5 46 41 47.5 41" stroke="#FFB23F" stroke-width="2.5" stroke-linecap="round" />
+  <circle cx="47.5" cy="42" r="2.2" fill="#FF6673" />
+  <circle cx="32" cy="24.5" r="2" fill="#FFB23F" />
+
+  <!-- Open Book Page Underneath -->
+  <path d="M18 47C23 45.5 28 46.5 32 49C36 46.5 41 45.5 46 47V52C41 50.5 36 51.5 32 54C28 51.5 23 50.5 18 52V47Z" fill="#FFFFFF" fill-opacity="0.85" />
+</svg>
