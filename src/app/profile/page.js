@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import ScrollReveal from "../components/ScrollReveal";
 
 const enrolledCourses = [
@@ -53,6 +54,7 @@ const certificates = [
 ];
 
 export default function ProfilePage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("courses"); // 'courses' | 'certificates' | 'settings'
   const [isEditing, setIsEditing] = useState(false);
 
@@ -67,6 +69,14 @@ export default function ProfilePage() {
     bio: "Étudiant passionné par le UI/UX design, le développement web et le freelancing en Algérie. Objectif: lancer mon studio créatif.",
   });
 
+  const handleClose = () => {
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/");
+    }
+  };
+
   const handleSaveProfile = (e) => {
     e.preventDefault();
     setIsEditing(false);
@@ -75,11 +85,77 @@ export default function ProfilePage() {
 
   return (
     <main className="w-full bg-[#FAF8FF] pb-24">
+      {/* STICKY TOP BAR WITH CLOSE "X" BUTTON (FOR PHONE & PC) */}
+      <div className="sticky top-0 z-40 flex items-center justify-between border-b border-[#ECE7F2] bg-white/95 px-5 py-3 shadow-sm backdrop-blur-md sm:px-8 lg:px-[6%]">
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={handleClose}
+            className="flex items-center gap-1.5 text-[13px] font-semibold text-[#55434A] transition-colors hover:text-[#5F50BD]"
+          >
+            <span>←</span>
+            <span>Retour</span>
+          </button>
+          <span className="text-[#D8D3E5]">•</span>
+          <span className="text-[13px] font-bold text-[#181B2E]">
+            Profil Étudiant Algérien 🇩🇿
+          </span>
+        </div>
+
+        {/* CLOSE "X" BUTTON */}
+        <button
+          type="button"
+          onClick={handleClose}
+          aria-label="Fermer le profil"
+          title="Fermer le profil (✕)"
+          className="group flex h-9 w-9 items-center justify-center rounded-full bg-[#FAF8FF] text-[#181B2E] border border-[#ECE7F2] shadow-sm transition-all duration-300 hover:scale-110 hover:bg-[#FFE8EB] hover:text-[#FF6673] hover:border-[#FFCBD1] active:scale-95"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="transition-transform duration-300 group-hover:rotate-90"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+
       {/* COVER & PROFILE HEADER */}
       <section className="relative overflow-hidden bg-gradient-to-r from-[#181B2E] via-[#2D2A4A] to-[#181B2E] pb-16 pt-12 text-white">
         {/* Ambient glow */}
         <div className="pointer-events-none absolute -left-10 top-0 h-64 w-64 rounded-full bg-[#FF6673]/20 blur-3xl" />
         <div className="pointer-events-none absolute -right-10 bottom-0 h-64 w-64 rounded-full bg-[#8C74D9]/25 blur-3xl" />
+
+        {/* CLOSE "X" BUTTON ON COVER CORNER */}
+        <button
+          type="button"
+          onClick={handleClose}
+          aria-label="Fermer"
+          title="Fermer (✕)"
+          className="group absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-[#FF6673] hover:text-white sm:right-8 sm:top-6"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="transition-transform duration-300 group-hover:rotate-90"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
 
         <div className="mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-[6%]">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">

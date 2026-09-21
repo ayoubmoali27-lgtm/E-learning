@@ -134,32 +134,57 @@ export default function Navbar() {
             {profileOpen && (
               <div className="absolute right-0 top-full mt-3 w-[330px] rounded-2xl border border-[#ECE7F2] bg-white p-4 shadow-[0_20px_45px_rgba(24,27,46,0.15)] z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                 {/* HEADER PROFILE INFO */}
-                <div className="flex items-start gap-3 border-b border-[#F0EDF6] pb-3.5">
-                  <div className="relative shrink-0">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-tr from-[#B92C40] to-[#E24C60] text-[15px] font-bold text-white shadow-md">
-                      YB
-                    </div>
-                    <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[11px] shadow ring-1 ring-black/5">
-                      🇩🇿
-                    </span>
-                  </div>
-
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-1">
-                      <h4 className="truncate text-[14px] font-bold text-[#181B2E]">
-                        Yacine Belkacem
-                      </h4>
-                      <span className="shrink-0 text-[11px] font-semibold text-[#8C74D9]">
-                        ياسين بلقاسم
+                <div className="flex items-start justify-between border-b border-[#F0EDF6] pb-3.5">
+                  <div className="flex items-start gap-3 min-w-0 flex-1">
+                    <div className="relative shrink-0">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-tr from-[#B92C40] to-[#E24C60] text-[15px] font-bold text-white shadow-md">
+                        YB
+                      </div>
+                      <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[11px] shadow ring-1 ring-black/5">
+                        🇩🇿
                       </span>
                     </div>
-                    <p className="text-[11px] font-medium text-[#76839A] truncate">
-                      Étudiant • USTHB Alger
-                    </p>
-                    <p className="text-[11px] text-[#A098A8] truncate">
-                      yacine.belkacem@edtech.dz
-                    </p>
+
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-1">
+                        <h4 className="truncate text-[14px] font-bold text-[#181B2E]">
+                          Yacine Belkacem
+                        </h4>
+                        <span className="shrink-0 text-[11px] font-semibold text-[#8C74D9]">
+                          ياسين بلقاسم
+                        </span>
+                      </div>
+                      <p className="text-[11px] font-medium text-[#76839A] truncate">
+                        Étudiant • USTHB Alger
+                      </p>
+                      <p className="text-[11px] text-[#A098A8] truncate">
+                        yacine.belkacem@edtech.dz
+                      </p>
+                    </div>
                   </div>
+
+                  {/* CLOSE "X" BUTTON */}
+                  <button
+                    type="button"
+                    onClick={() => setProfileOpen(false)}
+                    aria-label="Fermer"
+                    title="Fermer (✕)"
+                    className="ml-2 -mr-1 -mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#F4F1FF] text-[#76839A] transition-all duration-200 hover:scale-110 hover:bg-[#FFE8EB] hover:text-[#FF6673]"
+                  >
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </button>
                 </div>
 
                 {/* ALGERIAN LOCATION & CONTACT TAG */}
